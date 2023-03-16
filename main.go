@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"os"
 	"server/database"
 	"server/pkg/mysql"
 	"server/routes"
@@ -27,7 +28,7 @@ func main() {
 	var AllowedMethods = handlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS", "PATCH", "DELETE"})
 	var AllowedOrigins = handlers.AllowedOrigins([]string{"*"})
 
-	var port = "8000"
+	var port = os.Getenv("PORT")
 	fmt.Println("server running localhost:" + port)
 
 	// Embed the setup allowed in 2 parameter on this below code ...
